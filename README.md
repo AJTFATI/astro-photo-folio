@@ -254,13 +254,13 @@ crawlers make no database call at all.
    `[[d1_databases]]` block in `wrangler.toml`:
 
    ```sh
-   npx wrangler d1 create photo_blog
+   npx wrangler d1 create astro-photo-folio
    ```
 
 2. **Create the tables** from the migration:
 
    ```sh
-   npx wrangler d1 execute photo_blog --remote --file=./migrations/0001_init.sql
+   npx wrangler d1 execute astro-photo-folio --remote --file=./migrations/0001_init.sql
    ```
 
 3. (Recommended) set a private salt for the dedup hash:
