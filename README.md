@@ -27,7 +27,7 @@ and you have a finished site.
 
 ## 1. Quick start
 
-**Requirements:** Node **≥ 22.12** (required by Astro 6; this repo's `.nvmrc`
+**Requirements:** Node **≥ 22.12** (required by Astro 7; this repo's `.nvmrc`
 pins major `22`).
 
 ```bash
