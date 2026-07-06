@@ -26,6 +26,14 @@ export default defineConfig({
   // domain; everything URL-bound is derived from it.
   site: 'https://example.com',
 
+  // Preserve Astro's pre-v7 HTML whitespace handling. Astro 7 changed the
+  // default `compressHTML` from `true` to `'jsx'`, which strips whitespace with
+  // JSX rules and drops the literal spaces this theme relies on between text and
+  // inline elements — e.g. "and a <a>Photo Blog</a>" would render as
+  // "and aPhoto Blog", and "on <a>Instagram</a>" as "onInstagram". Pinning
+  // `true` keeps the exact rendered spacing the template shipped with.
+  compressHTML: true,
+
   // Markdown for the blogs. Prism highlights code with CSS *classes* (themed in
   // global.css) rather than inline styles, so syntax colors work under the strict
   // CSP without needing 'unsafe-inline' for styles.
@@ -33,9 +41,9 @@ export default defineConfig({
     syntaxHighlight: 'prism',
     // Emit GFM table column alignment as `align` attributes rather than inline
     // `style="text-align:…"`, so tables stay within the strict CSP (no
-    // style-src 'unsafe-inline'). Styled in global.css. Set on the default
-    // unified() processor — the old `markdown.remarkRehype` shortcut is
-    // deprecated in Astro 6 and slated for removal in a future major.
+    // style-src 'unsafe-inline'). Styled in global.css. Configured on the
+    // `unified()` processor directly — the older `markdown.remarkRehype`
+    // shortcut was deprecated ahead of Astro 7, so this is the supported form.
     processor: unified({ remarkRehype: { tableCellAlignToStyle: false } }),
   },
 
